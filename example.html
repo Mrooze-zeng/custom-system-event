@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    body {
+      width: 100%;
+      position: relative;
+    }
+
+    .float-message {
+      position: fixed;
+      width: 100%;
+      height: 25px;
+      background: rgba(0, 0, 0, .3);
+      top: 50%;
+      left: 0;
+      margin-top: calc(25px / 2);
+      text-align: center;
+      color: #ffffff;
+    }
+  </style>
+</head>
+
+<body onload="handler()">
+  <div id="browser-info"></div>
+  <div id="system-info"></div>
+  <div id="test-info"></div>
+  <input type="text">
+  <span id="keyboard-state"></span>
+  <span id="screen-state"></span>
+  <div class="float-message" id="scroll-state" hidden></div>
+  <script src="./lib/index.js"></script>
+  <!-- <script src="./app.js"></script> -->
+
+  <script>
+    function handler() {
+      for (let i = 0; i < 1000; i++) {
+        let p = document.createElement("p");
+        p.innerHTML = i;
+        document.body.append(p)
+      }
+    }
+    let browserInfo = document.getElementById("browser-info")
+    let systemInfo = document.getElementById("system-info")
+    let keyboardState = document.getElementById("keyboard-state")
+    let screenState = document.getElementById("screen-state")
+    let scrollState = document.getElementById("scroll-state")
+    let timer = null;
+
+    browserInfo.innerHTML = navigator.userAgent
+    systemInfo.innerHTML = navigator.platform
+
+
+    window.addEventListener("device-portrait", function (evt) {
+      console.log("portrait")
+      screenState.innerHTML = "竖屏"
+    })
+    window.addEventListener("device-landscape", function (evt) {
+      console.log("lanscape")
+      screenState.innerHTML = "横屏"
+    })
+    window.addEventListener("keyboard-raise", function () {
+      console.log("keyboard raise===============")
+      keyboardState.innerHTML = "键盘弹起"
+    })
+    window.addEventListener("keyboard-down", function () {
+      console.log("keyboard down===============")
+      keyboardState.innerHTML = "键盘收起"
+    })
+    window.addEventListener("scroll-start", function () {
+      console.log("============scroll start=============")
+
+      timer && clearTimeout(timer);
+      scrollState.hidden = false;
+      scrollState.innerHTML = "State: === start ==="
+    })
+    window.addEventListener("scroll-on", function () {
+      console.log("============scroll on=============")
+      scrollState.innerHTML = "State: === on ==="
+    })
+    window.addEventListener("scroll-stop", function () {
+      console.log("============scroll stop=============")
+      scrollState.innerHTML = "State: === stop ===";
+      timer = setTimeout(() => {
+        scrollState.hidden = true;
+      }, 1000)
+    })
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,23 @@
+{
+  "name": "custom-system-event",
+  "version": "1.0.0",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "description": "Custom system event including scroll start,scroll on,scroll stop,window rotate,keyboard raise and down.",
+  "main": "lib/index.js",
+  "repository": "https://github.com/Mrooze-zeng/custom-system-event.git",
+  "author": "mrooze@v-hiker.cn",
+  "license": "MIT",
+  "private": true,
+  "devDependencies": {
+    "@babel/core": "^7.7.2",
+    "@babel/preset-env": "^7.7.1",
+    "babel-preset-es2015-rollup": "^3.0.0",
+    "rollup": "^1.27.1",
+    "rollup-plugin-babel": "^4.3.3",
+    "rollup-plugin-babel-minify": "^9.1.1",
+    "rollup-plugin-node-resolve": "^5.2.0"
+  },
+  "dependencies": {}
+}
