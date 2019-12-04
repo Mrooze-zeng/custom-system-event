@@ -1,6 +1,6 @@
 {
   "name": "custom-system-event",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "scripts": {
     "build": "rollup -c"
   },
@@ -9,7 +9,7 @@
   "repository": "https://github.com/Mrooze-zeng/custom-system-event.git",
   "author": "mrooze@v-hiker.cn",
   "license": "MIT",
-  "private": true,
+  "private": false,
   "devDependencies": {
     "@babel/core": "^7.7.2",
     "@babel/preset-env": "^7.7.1",
@@ -17,6 +17,7 @@
     "rollup": "^1.27.1",
     "rollup-plugin-babel": "^4.3.3",
     "rollup-plugin-babel-minify": "^9.1.1",
+    "rollup-plugin-copy": "^3.1.0",
     "rollup-plugin-node-resolve": "^5.2.0"
   },
   "dependencies": {}
